@@ -1,13 +1,19 @@
+/*
+ * @Descripttion: 
+ * @Author: jiegiser
+ * @Date: 2020-04-09 15:34:34
+ * @LastEditors: jiegiser
+ * @LastEditTime: 2020-04-10 08:28:13
+ */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
+import 'antd/dist/antd.css';
+import 'cesium/Widgets/widgets.css'
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <App />,
   document.getElementById('root')
 );
 
