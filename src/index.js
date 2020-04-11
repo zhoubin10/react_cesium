@@ -3,7 +3,7 @@
  * @Author: jiegiser
  * @Date: 2020-04-09 15:34:34
  * @LastEditors: jiegiser
- * @LastEditTime: 2020-04-10 08:28:13
+ * @LastEditTime: 2020-04-10 08:46:07
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -12,6 +12,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'antd/dist/antd.css';
 import 'cesium/Widgets/widgets.css'
+import buildModuleUrl from "cesium/Core/buildModuleUrl";
+buildModuleUrl.setBaseUrl('./Source');
 ReactDOM.render(
   <App />,
   document.getElementById('root')

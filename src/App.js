@@ -3,12 +3,12 @@
  * @Author: jiegiser
  * @Date: 2020-04-09 15:34:34
  * @LastEditors: jiegiser
- * @LastEditTime: 2020-04-10 08:37:44
+ * @LastEditTime: 2020-04-10 08:57:45
  */
 import React from 'react';
 import './App.css';
 import { Layout, Menu } from 'antd';
-import Viewer from "cesium/Widgets/Viewer/Viewer";
+import * as cesium from "cesium/Cesium";
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -29,7 +29,9 @@ class App extends React.Component {
     });
   };
   componentDidMount() {
-    this.viewer = new Viewer(this.cesiumContainer)
+    this.viewer = new cesium.Viewer(this.cesiumContainer, {
+      terrainProvider: cesium.createWorldTerrain()
+    })
   }
   render() {
     return (
