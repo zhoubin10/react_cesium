@@ -8,11 +8,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 import 'antd/dist/antd.css';
 import 'cesium/Widgets/widgets.css'
+import App from './App';
 import buildModuleUrl from "cesium/Core/buildModuleUrl";
+import * as serviceWorker from './serviceWorker';
 buildModuleUrl.setBaseUrl('./Source');
 ReactDOM.render(
   <App />,
