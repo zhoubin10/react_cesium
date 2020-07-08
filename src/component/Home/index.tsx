@@ -4,19 +4,19 @@ import {
   MenuUnfoldOutlined,
   MenuFoldOutlined
 } from '@ant-design/icons';
-import { Router } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { createHashHistory } from "history";
 import MenuComponent from '../Menu/index';
 import ContentMap from '../Content/index';
 import './index.css';
 const history = createHashHistory();
-
+console.log(history, 'history')
 const { Header, Sider } = Layout;
 
 const SiderDemo  =() => {
   const [ collapsed, toggle ] = useState(false)
     return (
-      <Router history={history}>
+      <HashRouter>
         <Layout className="layout">
           <Sider trigger={null} collapsible collapsed={collapsed}>
             <MenuComponent />
@@ -31,7 +31,7 @@ const SiderDemo  =() => {
             <ContentMap />
           </Layout>
         </Layout>
-      </Router>
+      </HashRouter>
     );
 }
 

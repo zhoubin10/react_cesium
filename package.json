@@ -146,6 +146,7 @@
     ]
   },
   "devDependencies": {
+    "@types/cesium": "^1.67.12",
     "@types/react-router-dom": "^5.1.5",
     "copy-webpack-plugin": "^6.0.3"
   }

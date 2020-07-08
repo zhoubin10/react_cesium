@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
 import '../HelloMap/index.css';
 const Cesium = require('cesium/Cesium');
-console.log(111)
 Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5ZjEwNzAxNy1hYzAxLTQ3YmUtYTBkMC0wZWIyY2VlNDc2MTIiLCJpZCI6MTcyNzIsInNjb3BlcyI6WyJhc3IiLCJnYyJdLCJpYXQiOjE1NzE4ODMxNTN9.pxvpncJUpu2VOzvYi82pbXkYLxPkFq7tESMTmK4jKeo';
 const EntityBox = () => {
-  console.log(111)
   useEffect(() => {
-    const viewer = new Cesium.Viewer('mapCon');
+    let viewer = new Cesium.Viewer('mapCon');
     viewer.entities.add({
       name : 'Red box with black outline',
       position: Cesium.Cartesian3.fromDegrees(-107.0, 40.0, 300000.0),
@@ -18,6 +16,10 @@ const EntityBox = () => {
       }
     });
     viewer.zoomTo(viewer.entities);
+
+    return () => {
+      viewer = null
+    }
   }, [])
   
   return (
