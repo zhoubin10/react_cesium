@@ -1,14 +1,13 @@
-import React, { useEffect } from 'react'
-import './index.css'
+import React, { useEffect } from 'react';
+import '../HelloMap/index.css';
+import zsml from '../../data/zsml.json'
+
 const cesium = require('cesium/Cesium')
 window.Cesium = cesium;
 Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5ZjEwNzAxNy1hYzAxLTQ3YmUtYTBkMC0wZWIyY2VlNDc2MTIiLCJpZCI6MTcyNzIsInNjb3BlcyI6WyJhc3IiLCJnYyJdLCJpYXQiOjE1NzE4ODMxNTN9.pxvpncJUpu2VOzvYi82pbXkYLxPkFq7tESMTmK4jKeo';
-const HelloMap = () => {
+const EntityBox = () => {
   useEffect(() => {
-    initMap()
-  }, [])
-  const initMap =  () => {
-    new Cesium.Viewer('mapCon', {
+    let viewer: Cesium.Viewer | null = new Cesium.Viewer('mapCon', {
       shouldAnimate: true, // 设置影像图列表
       geocoder: false, // 右上角查询按钮
       shadows: false,
@@ -23,12 +22,19 @@ const HelloMap = () => {
       selectionIndicator: false,
       timeline: false, // 时间轴
       navigationHelpButton: false, // 帮助按钮
-    })
-  }
+    });
+    const dataSourcePromise = Cesium.CzmlDataSource.load(zsml)
+    viewer.dataSources.add(dataSourcePromise)
+    viewer.zoomTo(dataSourcePromise);
+    return () => {
+      viewer = null
+    }
+  }, [])
+  
   return (
     <div id="mapCon">
       
     </div>
   )
 }
-export default HelloMap;
+export default EntityBox;
