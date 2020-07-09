@@ -6,6 +6,7 @@ import DTiles from '../pages/3DTiles/index'
 import Material from '../pages/Material/index'
 import Tiandt from '../pages/Tiandt/index'
 import Camera from '../pages/Camera/index'
+import Geojson from '../pages/Geojson/index'
 import {
   UserOutlined,
 } from '@ant-design/icons';
@@ -65,5 +66,13 @@ export default [
       icon: UserOutlined
     },
     component: Camera
+  },
+  {
+    path: '/Geojson',
+    meta: {
+      title: 'geojson 数据加载',
+      icon: UserOutlined
+    },
+    component: Geojson
   }
 ]
