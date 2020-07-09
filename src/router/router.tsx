@@ -5,6 +5,7 @@ import CzmlBox from '../pages/CzmlBox/index'
 import DTiles from '../pages/3DTiles/index'
 import Material from '../pages/Material/index'
 import Tiandt from '../pages/Tiandt/index'
+import Camera from '../pages/Camera/index'
 import {
   UserOutlined,
 } from '@ant-design/icons';
@@ -56,5 +57,13 @@ export default [
       icon: UserOutlined
     },
     component: Tiandt
+  },
+  {
+    path: '/Camera',
+    meta: {
+      title: 'Camera 设置',
+      icon: UserOutlined
+    },
+    component: Camera
   }
 ]
