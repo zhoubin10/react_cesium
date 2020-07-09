@@ -4,6 +4,7 @@ import EntityBox from '../pages/EntityBox/index'
 import CzmlBox from '../pages/CzmlBox/index'
 import DTiles from '../pages/3DTiles/index'
 import Material from '../pages/Material/index'
+import Tiandt from '../pages/Tiandt/index'
 import {
   UserOutlined,
 } from '@ant-design/icons';
@@ -47,5 +48,13 @@ export default [
       icon: UserOutlined
     },
     component: Material
+  },
+  {
+    path: '/Tiandt',
+    meta: {
+      title: '加载天地图',
+      icon: UserOutlined
+    },
+    component: Tiandt
   }
 ]
