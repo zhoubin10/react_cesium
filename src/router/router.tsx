@@ -2,6 +2,8 @@
 import HelloMap from '../pages/HelloMap/index'
 import EntityBox from '../pages/EntityBox/index'
 import CzmlBox from '../pages/CzmlBox/index'
+import DTiles from '../pages/3DTiles/index'
+import Material from '../pages/Material/index'
 import {
   UserOutlined,
 } from '@ant-design/icons';
@@ -29,5 +31,21 @@ export default [
       icon: UserOutlined
     },
     component: CzmlBox
+  },
+  {
+    path: '/3DTiles',
+    meta: {
+      title: '3D Tiles 贴地加载',
+      icon: UserOutlined
+    },
+    component: DTiles
+  },
+  {
+    path: '/Material',
+    meta: {
+      title: '设置材质',
+      icon: UserOutlined
+    },
+    component: Material
   }
 ]

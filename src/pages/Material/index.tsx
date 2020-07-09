@@ -4,7 +4,7 @@ const cesium = require('cesium/Cesium');
 window.Cesium = cesium;
 
 Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5ZjEwNzAxNy1hYzAxLTQ3YmUtYTBkMC0wZWIyY2VlNDc2MTIiLCJpZCI6MTcyNzIsInNjb3BlcyI6WyJhc3IiLCJnYyJdLCJpYXQiOjE1NzE4ODMxNTN9.pxvpncJUpu2VOzvYi82pbXkYLxPkFq7tESMTmK4jKeo';
-const EntityBox = () => {
+const Material = () => {
   useEffect(() => {
     let viewer: Cesium.Viewer | null = new Cesium.Viewer('mapCon', {
       shouldAnimate: true, // 设置影像图列表
@@ -22,16 +22,32 @@ const EntityBox = () => {
       timeline: false, // 时间轴
       navigationHelpButton: false, // 帮助按钮
     });
+    // 显示帧数
+    viewer.scene.debugShowFramesPerSecond = true
+    // 构造时赋材质
     viewer.entities.add({
-      name : 'Red box with black outline',
-      position: Cesium.Cartesian3.fromDegrees(-107.0, 40.0, 300000.0),
-      box : {
-        dimensions : new Cesium.Cartesian3(400000.0, 300000.0, 500000.0),
-        material : Cesium.Color.RED.withAlpha(0.5),
-        outline : true,
-        outlineColor : Cesium.Color.BLACK
+      position: Cesium.Cartesian3.fromDegrees(-103.0, 40.0),
+      ellipse: {
+        semiMinorAxis: 250000.0,
+        semiMajorAxis: 400000.0,
+        // 可以设置不同的 MaterialProprtey
+        // material: Cesium.Color.BLUE.withAlpha(0.5)
+        material: new Cesium.ImageMaterialProperty({
+          image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTIxGeNkcRPD4pI0LY1qcMgQvjPYSjHv8V1SQ&usqp=CAU',
+          repeat: new Cesium.Cartesian2(4, 4)
+        })
       }
-    });
+    })
+    viewer.entities.add({
+      polyline: { 
+        positions: Cesium.Cartesian3.fromDegreesArray([-98.0, 40, -98.1, 42]),
+        width: 5,
+        material: new Cesium.PolylineGlowMaterialProperty({
+          glowPower: 0.2,
+          color: Cesium.Color.ORANGE,
+        })
+      }
+    })
     viewer.zoomTo(viewer.entities);
     return () => {
       viewer = null
@@ -44,4 +60,4 @@ const EntityBox = () => {
     </div>
   )
 }
-export default EntityBox;
+export default Material;
