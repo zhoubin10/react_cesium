@@ -4,7 +4,7 @@ import '../HelloMap/index.css';
 const cesium = require('cesium/Cesium')
 window.Cesium = cesium;
 Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5ZjEwNzAxNy1hYzAxLTQ3YmUtYTBkMC0wZWIyY2VlNDc2MTIiLCJpZCI6MTcyNzIsInNjb3BlcyI6WyJhc3IiLCJnYyJdLCJpYXQiOjE1NzE4ODMxNTN9.pxvpncJUpu2VOzvYi82pbXkYLxPkFq7tESMTmK4jKeo';
-const Camera = () => {
+const Geojson = () => {
   useEffect(() => {
     let viewer: Cesium.Viewer | null = new Cesium.Viewer('mapCon', {
       shouldAnimate: true, // 设置影像图列表
@@ -52,9 +52,25 @@ const Camera = () => {
       maximumLevel: 18,
     })
     viewer.imageryLayers.addImageryProvider(vec_w)
-    const dataSource = Cesium.GeoJsonDataSource.load('./data/simplestyles.geojson')
-    viewer.dataSources.add(dataSource)
-    viewer.zoomTo(dataSource)
+    
+    const geojsonOptions: Cesium.GeoJsonDataSource.LoadOptions = {
+      // 贴地加载
+      clampToGround: true
+    }
+    const dataSource = Cesium.GeoJsonDataSource.load('./data/simplestyles.geojson', geojsonOptions)
+    dataSource.then((dataSource) => {
+      if (viewer) {
+        const areaEntities = dataSource.entities.values
+        areaEntities.forEach(entity => {
+          if (Cesium.defined(entity.polygon)) {
+            entity.name = entity.properties ? entity.properties.name : ''
+          }
+        })
+        console.log(dataSource.entities.values)
+        viewer.dataSources.add(dataSource)
+        viewer.zoomTo(dataSource)
+      }
+    })
     return () => {
       viewer = null
     }
@@ -66,4 +82,4 @@ const Camera = () => {
     </div>
   )
 }
-export default Camera;
+export default Geojson;

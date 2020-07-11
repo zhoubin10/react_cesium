@@ -25,10 +25,23 @@ const EntityBox = () => {
       timeline: false, // 时间轴
       navigationHelpButton: false, // 帮助按钮
     });
+    // 加载自定义数据
     const tilest = new Cesium.Cesium3DTileset({
       url: '/data/tileset.json'
     })
+    // // 加载 cesium 服务数据
+    // const city = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({url: Cesium.IonResource.fromAssetId(3839)}))
+    // // 设置样式
+    // const heightStyle = new Cesium.Cesium3DTileStyle({
+    //   color: {
+    //     conditions: [
+    //       ['${height} > 300', 'rgba(45, 0, 75, 0.5)']
+    //     ]
+    //   }
+    // })
+    // city.style = heightStyle
     setTilests(tilest)
+    // tilest.style = heightStyle
     tilest.readyPromise.then(tilest => {
       if (viewer) {
         viewer.scene.primitives.add(tilest)

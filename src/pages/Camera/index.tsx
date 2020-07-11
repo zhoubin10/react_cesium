@@ -58,8 +58,11 @@ const Camera = () => {
     // viewer.camera.setView({
     //   // 设置位置
     //   destination: Cesium.Cartesian3.fromDegrees(103.40, 36, 15000),
+    //   // 设置方向
     //   orientation : {
+    //     // 左右摆头 控制台获取 viewer.camera.heading
     //     heading: Cesium.Math.toRadians(80),
+    //     // 上下抬头
     //     pitch: Cesium.Math.toRadians(-40),
     //     roll: 0
     //   }
