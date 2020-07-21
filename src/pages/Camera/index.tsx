@@ -79,7 +79,9 @@ const Camera = () => {
     // })
     // 第二种：flyto
     viewer.camera.flyTo({
+      // 相机的位置
       destination: Cesium.Cartesian3.fromDegrees(103.40, 36, 15000),
+      // 相机的姿态
       orientation: {
         heading: Cesium.Math.toRadians(-0),
         pitch: Cesium.Math.toRadians(-40),

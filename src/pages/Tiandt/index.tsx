@@ -8,6 +8,7 @@ const HelloMap = () => {
   const TDU_Key = "a89df02c93e5474e9ebeb81a32fcb487"
   useEffect(() => {
     initMap()
+    // eslint-disable-next-line
   }, [])
   const initMap =  () => {
     new Cesium.Viewer('mapCon', {

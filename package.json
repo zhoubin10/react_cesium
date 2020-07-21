@@ -2,6 +2,7 @@
   "name": "react_cesium",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://172.16.10.132:8012",
   "dependencies": {
     "@babel/core": "7.9.0",
     "@svgr/webpack": "4.3.3",
