@@ -158,3 +158,11 @@ viewer.trackedEntityChanged.addEventListener(function() {
 });
 
 ```
+9. 立即停止 viewer 的 fly 动画
+
+```js
+  function() {
+    this.viewer.clock.canAnimate = false;
+    this.viewer.clock.shouldAnimate = false;
+  }
+```
